@@ -1,10 +1,19 @@
 [versions]
 guava = "33.3.1-jre"
 junit-jupiter = "5.11.2"
+kotest = "6.0.0.M1"
 
 [libraries]
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
+kotest = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+
+[bundles]
+kotest = [
+    "kotest",
+    "kotest-assertions",
+]
 
 [plugins]
 kotlin-jvm = "org.jetbrains.kotlin.jvm:2.1.0-Beta1"

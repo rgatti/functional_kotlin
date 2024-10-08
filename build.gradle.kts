@@ -31,6 +31,7 @@ repositories {
 dependencies {
     implementation(libs.guava)
     testImplementation(libs.junit.jupiter)
+    testImplementation(libs.bundles.kotest)
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
