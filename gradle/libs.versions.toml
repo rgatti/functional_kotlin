@@ -1,0 +1,13 @@
+[versions]
+guava = "33.3.1-jre"
+junit-jupiter = "5.11.2"
+
+[libraries]
+guava = { module = "com.google.guava:guava", version.ref = "guava" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
+
+[plugins]
+kotlin-jvm = "org.jetbrains.kotlin.jvm:2.1.0-Beta1"
+spotless = "com.diffplug.spotless:7.0.0.BETA2"
+version-catalog-update = "nl.littlerobots.version-catalog-update:0.8.4"
+versions = "com.github.ben-manes.versions:0.51.0"
