@@ -38,7 +38,7 @@ fun sum4(xs: List<Double>) = foldLeft(xs, 0.0) { a, b -> a + b }
 
 fun variance(xs: List<Double>): Option<Double> =
     Some(xs)
-        .filter { length1(xs) > 1 }
+        .filter { length1(it) > 1 }
         .flatMap { mean(it) }
         .flatMap { m ->
             Some(sum4(map(xs) { (it - m).pow(2) }) / (length1(xs) - 1))
@@ -72,7 +72,7 @@ fun <A> sequence1(xs: List<Option<A>>): Option<List<A>> =
 fun <A> sequence(xs: List<Option<A>>): Option<List<A>> =
     foldRight(xs, Some(empty())) { a: Option<A>, l: Option<List<A>> ->
         //println("a: $a, l: $l")
-        l.flatMap { ll -> a.map { Cons(it, ll) } } // map2()
+        l.flatMap { ll -> a.map { Cons(it, ll) } } //map2(a, l) { aa, ll -> Cons(aa, ll) }
     }
 
 fun <A, B> traverse(xs: List<A>, f: (A) -> Option<B>): Option<List<B>> =
@@ -88,8 +88,9 @@ fun main() {
         .map { it.print() }
 
     val l = List.of(1, 2, 3)
-    traverse(l) {
+    val f: (Int) -> Option<Int> = {
         Some(it * 2)
-        //if(it == 2) None else Some(it)
-    }.map { println(it) }
+       //if(it == 2) None else Some(it)
+    }
+    traverse(l, f).map { println(it) }
 }
